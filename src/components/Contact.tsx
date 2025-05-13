@@ -1,7 +1,7 @@
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Robot, MessageCircleText, CircleUser, Send } from "lucide-react";
+import { Bot, MessageCircle, User, Send } from "lucide-react";
 
 const Contact = () => {
   const [name, setName] = useState("");
@@ -56,7 +56,7 @@ const Contact = () => {
               <div className="mb-6">
                 <label htmlFor="name" className="block text-white/70 mb-2">Your Name</label>
                 <div className="relative">
-                  <CircleUser className="absolute left-3 top-1/2 transform -translate-y-1/2 text-futuristic-purple/60" />
+                  <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-futuristic-purple/60" />
                   <input
                     id="name"
                     type="text"
@@ -72,7 +72,7 @@ const Contact = () => {
               <div className="mb-6">
                 <label htmlFor="email" className="block text-white/70 mb-2">Your Email</label>
                 <div className="relative">
-                  <MessageCircleText className="absolute left-3 top-1/2 transform -translate-y-1/2 text-futuristic-purple/60" />
+                  <MessageCircle className="absolute left-3 top-1/2 transform -translate-y-1/2 text-futuristic-purple/60" />
                   <input
                     id="email"
                     type="email"
@@ -155,7 +155,7 @@ const Contact = () => {
                   animate={{ y: [0, -10, 0] }}
                   transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
                 >
-                  <Robot className="w-24 h-24 text-futuristic-cyan" />
+                  <Bot className="w-24 h-24 text-futuristic-cyan" />
                 </motion.div>
               </div>
             </div>
@@ -194,3 +194,4 @@ const Contact = () => {
 };
 
 export default Contact;
+

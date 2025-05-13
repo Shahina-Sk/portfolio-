@@ -1,5 +1,5 @@
 
-import React, { useEffect } from "react";
+import React from "react";
 import { motion, useScroll, useSpring } from "framer-motion";
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
@@ -20,17 +20,6 @@ const Index = () => {
     damping: 30,
     restDelta: 0.001
   });
-  
-  // Add framer-motion
-  useEffect(() => {
-    const script = document.createElement('script');
-    script.src = "https://unpkg.com/framer-motion@10.12.4/dist/framer-motion.js";
-    script.async = true;
-    document.body.appendChild(script);
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
   
   return (
     <MotionConfig reducedMotion="user">
@@ -58,3 +47,4 @@ const Index = () => {
 };
 
 export default Index;
+
