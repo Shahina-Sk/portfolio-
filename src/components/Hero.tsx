@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 
@@ -36,7 +37,7 @@ const Hero = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
         >
-          <h1 ref={textRef} className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-gradient">
+          <h1 ref={textRef} className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-white">
             {heroText}
           </h1>
         </motion.div>
