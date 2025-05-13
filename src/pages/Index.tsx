@@ -1,13 +1,59 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import React, { useEffect } from "react";
+import { motion, useScroll, useSpring } from "framer-motion";
+import Navigation from "@/components/Navigation";
+import Hero from "@/components/Hero";
+import About from "@/components/About";
+import Projects from "@/components/Projects";
+import Skills from "@/components/Skills";
+import Testimonials from "@/components/Testimonials";
+import Contact from "@/components/Contact";
+import Footer from "@/components/Footer";
+
+// Import framer-motion manually
+import { MotionConfig } from "framer-motion";
 
 const Index = () => {
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
+  
+  // Add framer-motion
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = "https://unpkg.com/framer-motion@10.12.4/dist/framer-motion.js";
+    script.async = true;
+    document.body.appendChild(script);
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+  
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
+    <MotionConfig reducedMotion="user">
+      <div className="bg-futuristic-black text-white overflow-hidden">
+        <motion.div
+          className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-futuristic-purple via-futuristic-cyan to-futuristic-magenta z-50 origin-left"
+          style={{ scaleX }}
+        />
+        
+        <Navigation />
+        
+        <main>
+          <Hero />
+          <About />
+          <Projects />
+          <Skills />
+          <Testimonials />
+          <Contact />
+        </main>
+        
+        <Footer />
       </div>
-    </div>
+    </MotionConfig>
   );
 };
 
