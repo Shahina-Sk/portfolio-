@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { Circle } from "lucide-react";
@@ -15,10 +14,9 @@ const Skills = () => {
   const skills: Skill[] = [
     { name: "UI/UX Design", level: 95, color: "#8B5CF6" },
     { name: "React Development", level: 90, color: "#33C3F0" },
-    { name: "Three.js", level: 85, color: "#D946EF" },
-    { name: "WebGL", level: 80, color: "#6E59A5" },
+    { name: "TypeScript", level: 88, color: "#3178C6" },
+    { name: "Next.js", level: 85, color: "#000000" },
     { name: "Python", level: 75, color: "#D6BCFA" },
-    { name: "AI/ML", level: 70, color: "#33C3F0" },
   ];
 
   useEffect(() => {
