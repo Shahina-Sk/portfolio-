@@ -1,4 +1,3 @@
-
 import React from "react";
 import { motion } from "framer-motion";
 import { GraduationCap, Briefcase, Star, BookUser, User, Mail, MapPin, Linkedin, Github } from "lucide-react";
@@ -44,10 +43,7 @@ const About = () => {
               
               <div className="space-y-4 max-w-3xl mx-auto">
                 <p className="text-white/80 mb-6 text-center">
-                  Energetic and quick-learning Computer Science graduate with hands-on project experience in web development, machine
-                  learning, and IoT systems. Strong problem-solving and client handling skills developed through project-based learning.
-                  Seeking a dynamic role at ICICI Bank to enhance digital customer service and contribute to technology-driven financial
-                  solutions.
+                  Energetic and quick-learning Computer Science graduate with hands-on project experience in full stack web development, including both front-end and back-end technologies. Proficient in building responsive, user-focused applications using modern frameworks and tools. Experienced in integrating APIs, managing databases, and deploying scalable web solutions. Strong problem-solving and collaboration skills developed through real-world project work. Seeking a dynamic Full Stack Developer role to contribute to innovative software solutions and deliver seamless digital experiences.
                 </p>
                 
                 <div className="flex flex-wrap justify-center gap-4 text-white/80">
