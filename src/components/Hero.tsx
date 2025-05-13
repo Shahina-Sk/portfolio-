@@ -1,10 +1,9 @@
-
 import React, { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 
 const Hero = () => {
   const textRef = useRef<HTMLDivElement>(null);
-  const heroText = "Visionary Creative Technologist";
+  const heroText = "shiny creative work";
   const subtitle = "Bridging design and technology to craft immersive digital experiences";
 
   useEffect(() => {
