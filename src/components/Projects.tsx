@@ -23,7 +23,7 @@ const Projects = () => {
       description: "A modern blog platform with dynamic content management and responsive design",
       tags: ["React", "Next.js", "JavaScript", "Tailwind CSS"],
       image: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=2070",
-      link: "https://example.com/blog-project"
+      link: "https://blog-website-fxq1.vercel.app/"
     },
     {
       id: 2,
