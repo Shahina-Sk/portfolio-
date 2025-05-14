@@ -15,8 +15,8 @@ const Footer = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
           >
-            <h3 className="text-2xl font-bold text-gradient">VISIONARY</h3>
-            <p className="text-white/60">Creative Technologist</p>
+            <h3 className="text-2xl font-bold text-gradient">SHINY</h3>
+            <p className="text-white/60">Creative Work</p>
           </motion.div>
           
           <motion.div
@@ -26,10 +26,8 @@ const Footer = () => {
             className="mt-6 md:mt-0"
           >
             <ul className="flex space-x-6">
-              <li><a href="#" className="text-white/60 hover:text-white transition-colors">Twitter</a></li>
-              <li><a href="#" className="text-white/60 hover:text-white transition-colors">LinkedIn</a></li>
-              <li><a href="#" className="text-white/60 hover:text-white transition-colors">GitHub</a></li>
-              <li><a href="#" className="text-white/60 hover:text-white transition-colors">Dribbble</a></li>
+              <li><a href="https://www.linkedin.com/in/shahina-shaik-17b755277/" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-white transition-colors">LinkedIn</a></li>
+              <li><a href="https://github.com/Shahina-Sk" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-white transition-colors">GitHub</a></li>
             </ul>
           </motion.div>
         </div>

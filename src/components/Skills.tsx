@@ -26,17 +26,35 @@ const Skills = () => {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    // Set canvas dimensions
+    // Set canvas dimensions and handle responsive sizing
     const setCanvasDimensions = () => {
       const container = canvas.parentElement;
       if (!container) return;
       
-      canvas.width = container.clientWidth;
-      canvas.height = container.clientHeight;
+      // Get the device pixel ratio for better rendering on high-DPI screens
+      const dpr = window.devicePixelRatio || 1;
+      
+      // Set the canvas dimensions based on the container size
+      canvas.width = container.clientWidth * dpr;
+      canvas.height = container.clientHeight * dpr;
+      
+      // Scale the canvas CSS dimensions
+      canvas.style.width = `${container.clientWidth}px`;
+      canvas.style.height = `${container.clientHeight}px`;
+      
+      // Scale the context to account for the device pixel ratio
+      ctx.scale(dpr, dpr);
     };
 
     setCanvasDimensions();
-    window.addEventListener("resize", setCanvasDimensions);
+    
+    // Re-render on window resize
+    const handleResize = () => {
+      setCanvasDimensions();
+      drawSkills(true); // Redraw immediately on resize
+    };
+    
+    window.addEventListener("resize", handleResize);
 
     // Animation variables
     let animationFrameId: number;
@@ -44,16 +62,17 @@ const Skills = () => {
     const animationDuration = 120; // frames
 
     // Draw skill graph
-    const drawSkills = () => {
+    const drawSkills = (immediate = false) => {
       if (!ctx || !canvas) return;
       
       // Clear canvas
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
       // Calculate center and radius
-      const centerX = canvas.width / 2;
-      const centerY = canvas.height / 2;
-      const maxRadius = Math.min(centerX, centerY) * 0.8;
+      const dpr = window.devicePixelRatio || 1;
+      const centerX = (canvas.width / dpr) / 2;
+      const centerY = (canvas.height / dpr) / 2;
+      const maxRadius = Math.min(centerX, centerY) * 0.7; // Slightly smaller radius for better visibility
       
       // Draw background circles
       for (let i = 5; i > 0; i--) {
@@ -81,15 +100,41 @@ const Skills = () => {
         ctx.strokeStyle = "rgba(255, 255, 255, 0.2)";
         ctx.stroke();
         
-        // Draw skill label
-        const labelDistance = maxRadius + 20;
+        // Draw skill labels on all screen sizes
+        const screenWidth = window.innerWidth;
+        
+        // Calculate label position based on screen size
+        const labelDistanceMultiplier = screenWidth < 768 ? 0.85 : 1.1;
+        const labelDistance = maxRadius * labelDistanceMultiplier;
         const labelX = centerX + Math.cos(angle) * labelDistance;
         const labelY = centerY + Math.sin(angle) * labelDistance;
         
-        ctx.fillStyle = "rgba(255, 255, 255, 0.7)";
-        ctx.font = "14px sans-serif";
+        // Responsive font size
+        const fontSize = screenWidth < 768 ? 10 : (screenWidth < 1024 ? 12 : 14);
+        
+        ctx.fillStyle = "rgba(255, 255, 255, 0.8)";
+        ctx.font = `${fontSize}px sans-serif`;
         ctx.textAlign = angle > Math.PI / 2 && angle < Math.PI * 3/2 ? "right" : "left";
         ctx.textBaseline = angle > 0 && angle < Math.PI ? "top" : "bottom";
+        
+        // Add a small background for better readability on mobile
+        if (screenWidth < 768) {
+          const textMetrics = ctx.measureText(skills[i].name);
+          const textWidth = textMetrics.width;
+          const textHeight = fontSize;
+          const padding = 4;
+          
+          ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
+          ctx.fillRect(
+            angle > Math.PI / 2 && angle < Math.PI * 3/2 ? labelX - textWidth - padding : labelX - padding,
+            angle > 0 && angle < Math.PI ? labelY - padding : labelY - textHeight - padding,
+            textWidth + padding * 2,
+            textHeight + padding * 2
+          );
+          
+          ctx.fillStyle = "rgba(255, 255, 255, 0.9)";
+        }
+        
         ctx.fillText(skills[i].name, labelX, labelY);
       }
       
@@ -149,9 +194,12 @@ const Skills = () => {
         ctx.stroke();
       }
       
-      if (animationProgress < animationDuration) {
+      if (immediate) {
+        // Skip animation if immediate redraw is requested (e.g., after resize)
+        animationProgress = animationDuration;
+      } else if (animationProgress < animationDuration) {
         animationProgress++;
-        animationFrameId = requestAnimationFrame(drawSkills);
+        animationFrameId = requestAnimationFrame(() => drawSkills());
       }
     };
     
@@ -160,7 +208,7 @@ const Skills = () => {
     
     // Cleanup
     return () => {
-      window.removeEventListener("resize", setCanvasDimensions);
+      window.removeEventListener("resize", handleResize);
       cancelAnimationFrame(animationFrameId);
     };
   }, []);
@@ -215,7 +263,7 @@ const Skills = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, delay: 0.3 }}
             viewport={{ once: true }}
-            className="md:col-span-8 glassmorphism rounded-2xl p-6 h-[400px]"
+            className="md:col-span-8 glassmorphism rounded-2xl p-6 h-[300px] sm:h-[350px] md:h-[400px]"
           >
             <canvas ref={canvasRef} className="w-full h-full"></canvas>
           </motion.div>

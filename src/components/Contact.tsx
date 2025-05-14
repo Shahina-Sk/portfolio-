@@ -61,7 +61,7 @@ const Contact = () => {
                     id="name"
                     type="text"
                     className="bg-white/10 border border-white/20 rounded-lg py-3 px-10 w-full text-white focus:outline-none focus:ring-2 focus:ring-futuristic-cyan/50"
-                    placeholder="John Doe"
+                    placeholder="Shiny"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     required
@@ -77,7 +77,7 @@ const Contact = () => {
                     id="email"
                     type="email"
                     className="bg-white/10 border border-white/20 rounded-lg py-3 px-10 w-full text-white focus:outline-none focus:ring-2 focus:ring-futuristic-cyan/50"
-                    placeholder="john@example.com"
+                    placeholder="shiny@gmail.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required

@@ -19,25 +19,25 @@ const Testimonials = () => {
   const testimonials: Testimonial[] = [
     {
       id: 1,
-      name: "Alex Chen",
-      role: "Creative Director",
-      company: "Neon Studios",
+      name: "Saman",
+      role: "Full Stack Developer",
+      company: "Tech Innovators",
       content: "Working with this visionary developer was an incredible experience. The attention to detail and innovative approach transformed our concept into a stunning digital reality.",
       avatar: "https://randomuser.me/api/portraits/men/32.jpg"
     },
     {
       id: 2,
-      name: "Sophia Williams",
-      role: "CEO",
-      company: "Quantum Innovations",
+      name: "Suvarna",
+      role: "Developer",
+      company: "Digital Solutions",
       content: "Extraordinary talent and exceptional execution. Our project requirements were complex, but the solutions provided were elegant and future-proof.",
       avatar: "https://randomuser.me/api/portraits/women/44.jpg"
     },
     {
       id: 3,
-      name: "Marcus Johnson",
-      role: "Tech Lead",
-      company: "Futura Technologies",
+      name: "Shannu",
+      role: "Python Developer",
+      company: "Data Dynamics",
       content: "A rare combination of technical excellence and creative vision. The work delivered exceeded our expectations and set a new standard for our digital products.",
       avatar: "https://randomuser.me/api/portraits/men/86.jpg"
     }

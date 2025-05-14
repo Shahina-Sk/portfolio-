@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { ExternalLink } from "lucide-react";
 
 interface Project {
   id: number;
@@ -9,6 +10,7 @@ interface Project {
   description: string;
   tags: string[];
   image: string;
+  link: string;
 }
 
 const Projects = () => {
@@ -17,31 +19,35 @@ const Projects = () => {
   const projects: Project[] = [
     {
       id: 1,
-      title: "Neural Interface",
-      description: "A futuristic UI system with advanced gesture controls",
-      tags: ["UI/UX", "Motion Design", "React"],
-      image: "https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?q=80&w=2070"
+      title: "Blog Website",
+      description: "A modern blog platform with dynamic content management and responsive design",
+      tags: ["React", "Next.js", "JavaScript", "Tailwind CSS"],
+      image: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=2070",
+      link: "https://example.com/blog-project"
     },
     {
       id: 2,
-      title: "Quantum Visualizer",
-      description: "Real-time 3D visualization of quantum computing processes",
-      tags: ["WebGL", "Data Viz", "Three.js"],
-      image: "https://images.unsplash.com/photo-1639322537157-d3abbf6de6f8?q=80&w=1932"
+      title: "Social Network Platform",
+      description: "Feature-rich social networking application with real-time messaging and content sharing",
+      tags: ["React", "Next.js", "JavaScript", "Tailwind CSS"],
+      image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=2070",
+      link: "https://open-scroll-hub.vercel.app/"
     },
     {
       id: 3,
-      title: "Cybernetic Assistant",
-      description: "AI-powered digital assistant with personalized interactions",
-      tags: ["ML", "NLP", "Python"],
-      image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=1965"
+      title: "AI Chat Assistant",
+      description: "ChatGPT-like conversational AI platform with natural language processing capabilities",
+      tags: ["React", "HTML", "CSS"],
+      image: "https://images.unsplash.com/photo-1655720828018-edd2daec9349?q=80&w=2070",
+      link: "https://example.com/ai-chat-assistant"
     },
     {
       id: 4,
-      title: "Holographic Projections",
-      description: "Augmented reality experiences through holographic interfaces",
-      tags: ["AR", "3D Modeling", "Unity"],
-      image: "https://images.unsplash.com/photo-1592478411213-6153e4ebc07d?q=80&w=2012"
+      title: "Fresh Harvest Market",
+      description: "E-commerce platform for organic vegetables with inventory management and delivery tracking",
+      tags: ["React", "HTML", "CSS"],
+      image: "https://images.unsplash.com/photo-1488459716781-31db52582fe9?q=80&w=2070",
+      link: "https://ecommerce-5z5q.vercel.app/"
     }
   ];
 
@@ -110,6 +116,18 @@ const Projects = () => {
                     </span>
                   ))}
                 </div>
+                
+                <a 
+                  href={project.link} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className={cn(
+                    "mt-4 inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-futuristic-purple to-futuristic-cyan rounded-full text-sm text-white font-medium transition-all hover:scale-105 hover:shadow-glow",
+                    hoveredProject === project.id ? "opacity-100" : "opacity-0"
+                  )}
+                >
+                  Visit Project <ExternalLink size={16} />
+                </a>
               </div>
             </motion.div>
           ))}
